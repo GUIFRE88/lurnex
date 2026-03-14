@@ -13,6 +13,9 @@ start: ## Inicia os containers em background
 down: ## Para e remove os containers
 	docker compose down
 
+stop: ## Para os containers
+	docker compose stop
+
 restart: ## Reinicia os containers
 	docker compose restart
 
