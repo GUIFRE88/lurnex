@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to root_path
+    assert_redirected_to dashboard_path
     assert cookies[:session_id]
   end
 

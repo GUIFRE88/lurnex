@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  get "dashboard", to: "dashboard#index"
   resource :registration, only: %i[new create], controller: :users
   resource :session
   resources :passwords, param: :token
-  root "sessions#new"
+  root "dashboard#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
