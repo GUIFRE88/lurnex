@@ -1,0 +1,37 @@
+<% content_for :title, "Lurnex | Recuperar senha" %>
+<% content_for :body_class, "auth-page" %>
+
+<div class="auth-wrapper">
+  <div class="card auth-card">
+    <div class="row g-0">
+      <div class="col-md-6 d-none d-md-flex auth-illustration">
+        <div>
+          <div class="auth-brand">Lurnex</div>
+          <p class="auth-tagline">Recupere o acesso da sua conta com seguranca.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 auth-form">
+        <h1>Esqueceu a senha?</h1>
+        <p class="auth-subtitle">Digite seu e-mail para receber as instrucoes de redefinicao.</p>
+
+        <%= tag.div(flash[:alert], class: "alert alert-danger py-2") if flash[:alert] %>
+        <%= tag.div(flash[:notice], class: "alert alert-success py-2") if flash[:notice] %>
+
+        <%= form_with url: passwords_path do |form| %>
+          <div class="mb-3">
+            <%= form.label :email_address, "E-mail", class: "form-label" %>
+            <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", class: "form-control", placeholder: "voce@exemplo.com", value: params[:email_address] %>
+          </div>
+
+          <%= form.submit "Enviar instrucoes", class: "btn btn-lurnex w-100" %>
+        <% end %>
+
+        <div class="d-flex justify-content-between mt-3 auth-links">
+          <%= link_to "Voltar para entrar", new_session_path %>
+          <%= link_to "Criar conta", new_registration_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<% content_for :title, "Lurnex | Redefinir senha" %>
+<% content_for :body_class, "auth-page" %>
+
+<div class="auth-wrapper">
+  <div class="card auth-card">
+    <div class="row g-0">
+      <div class="col-md-6 d-none d-md-flex auth-illustration">
+        <div>
+          <div class="auth-brand">Lurnex</div>
+          <p class="auth-tagline">Defina uma nova senha e continue sua experiencia.</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 auth-form">
+        <h1>Redefinir senha</h1>
+        <p class="auth-subtitle">Escolha uma nova senha segura para sua conta.</p>
+
+        <%= tag.div(flash[:alert], class: "alert alert-danger py-2") if flash[:alert] %>
+        <%= tag.div(flash[:notice], class: "alert alert-success py-2") if flash[:notice] %>
+
+        <%= form_with url: password_path(params[:token]), method: :put do |form| %>
+          <div class="mb-3">
+            <%= form.label :password, "Nova senha", class: "form-label" %>
+            <%= form.password_field :password, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Digite a nova senha", maxlength: 72 %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :password_confirmation, "Confirmar nova senha", class: "form-label" %>
+            <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control", placeholder: "Repita a nova senha", maxlength: 72 %>
+          </div>
+
+          <%= form.submit "Salvar nova senha", class: "btn btn-lurnex w-100" %>
+        <% end %>
+
+        <div class="mt-3 auth-links text-center">
+          <%= link_to "Voltar para entrar", new_session_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

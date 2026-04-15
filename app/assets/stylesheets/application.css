@@ -8,3 +8,132 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+:root {
+  --lurnex-primary: #1ea7e1;
+  --lurnex-primary-dark: #1488c0;
+  --lurnex-bg-top: #def3ff;
+  --lurnex-bg-bottom: #cbe9fb;
+  --lurnex-panel: #12a3e0;
+}
+
+body.auth-page {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(160deg, var(--lurnex-bg-top) 0%, var(--lurnex-bg-bottom) 100%);
+}
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.auth-card {
+  width: min(960px, 100%);
+  border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(17, 75, 110, 0.2);
+}
+
+.auth-illustration {
+  min-height: 280px;
+  background: linear-gradient(180deg, #26b2ec 0%, var(--lurnex-panel) 100%);
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+.auth-illustration::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  right: 1.2rem;
+  bottom: 1.2rem;
+}
+
+.auth-brand {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+}
+
+.auth-tagline {
+  max-width: 260px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-form {
+  padding: 2.3rem;
+  background: #fff;
+}
+
+.auth-form h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  color: #1f2a37;
+}
+
+.auth-subtitle {
+  color: #64748b;
+  margin-bottom: 1.4rem;
+}
+
+.auth-form .form-control {
+  border-color: #d3deea;
+  padding: 0.65rem 0.75rem;
+}
+
+.auth-form .form-control:focus {
+  border-color: var(--lurnex-primary);
+  box-shadow: 0 0 0 0.2rem rgba(30, 167, 225, 0.2);
+}
+
+.btn-lurnex {
+  background: var(--lurnex-primary);
+  border-color: var(--lurnex-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-lurnex:hover,
+.btn-lurnex:focus {
+  background: var(--lurnex-primary-dark);
+  border-color: var(--lurnex-primary-dark);
+  color: #fff;
+}
+
+.auth-links {
+  font-size: 0.95rem;
+}
+
+.auth-links a {
+  color: var(--lurnex-primary-dark);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .auth-form {
+    padding: 1.5rem;
+  }
+
+  .auth-illustration {
+    padding: 1.6rem;
+  }
+}
