@@ -1,8 +1,22 @@
 Rails.application.routes.draw do
   get "dashboard", to: "dashboard#index"
+  get "invites/:token", to: "invites#show", as: :invite
+  resource :organization, only: [] do
+    patch :switch
+  end
   resource :registration, only: %i[new create], controller: :users
   resource :session
   resources :passwords, param: :token
+  namespace :admin do
+    resource :dashboard, only: :show
+    resources :courses, only: %i[index new create]
+    resources :enrollments, only: :create
+    resources :invites, only: %i[index create]
+  end
+  namespace :student do
+    resource :dashboard, only: :show
+    resource :profile, only: %i[edit update]
+  end
   root "dashboard#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

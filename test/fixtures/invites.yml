@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  invited_by_membership: one
+  email_address: invite1@example.com
+  role: 1
+  token: token-one
+  accepted_at:
+
+two:
+  organization: two
+  invited_by_membership: three
+  email_address: invite2@example.com
+  role: 1
+  token: token-two
+  accepted_at:

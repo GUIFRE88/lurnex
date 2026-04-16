@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  title: Ruby Basics
+  description: Intro
+
+two:
+  organization: two
+  title: Rails Advanced
+  description: Advanced

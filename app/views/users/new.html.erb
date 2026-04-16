@@ -19,6 +19,15 @@
         <%= tag.div(flash[:notice], class: "alert alert-success py-2") if flash[:notice] %>
 
         <%= form_with model: @user, url: registration_path do |form| %>
+          <%= hidden_field_tag :invite_token, params[:invite_token] if params[:invite_token].present? %>
+
+          <% if params[:invite_token].blank? %>
+            <div class="mb-3">
+              <%= label_tag :organization_name, "Organizacao", class: "form-label" %>
+              <%= text_field_tag :organization_name, params[:organization_name], required: true, class: "form-control", placeholder: "Nome da sua organizacao" %>
+            </div>
+          <% end %>
+
           <div class="mb-3">
             <%= form.label :email_address, "E-mail", class: "form-label" %>
             <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", class: "form-control", placeholder: "voce@exemplo.com" %>

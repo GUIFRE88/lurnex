@@ -1,0 +1,43 @@
+<div class="container py-4">
+  <h1>Invites</h1>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger"><%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+  <% end %>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h2 class="h5">Create invite</h2>
+      <%= form_with model: Invite.new, url: admin_invites_path do |form| %>
+        <div class="row g-2">
+          <div class="col-md-6">
+            <%= form.email_field :email_address, class: "form-control", placeholder: "student@example.com", required: true %>
+          </div>
+          <div class="col-md-3">
+            <%= form.select :role, Invite.roles.keys, {}, class: "form-select" %>
+          </div>
+          <div class="col-md-3">
+            <%= form.submit "Invite", class: "btn btn-primary w-100" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <% @invites.each do |invite| %>
+      <li class="list-group-item d-flex justify-content-between">
+        <span><%= invite.email_address %> (<%= invite.role %>)</span>
+        <span>
+          <% if invite.accepted_at.present? %>
+            accepted
+          <% else %>
+            pending - token: <%= invite.token %>
+          <% end %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</div>
