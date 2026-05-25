@@ -2,7 +2,6 @@ services:
   db:
     image: postgres:17-alpine
     container_name: lurnex_postgres
-    restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
