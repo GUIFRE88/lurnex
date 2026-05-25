@@ -17,7 +17,9 @@ module Admin
 
     private
       def invite_params
-        params.require(:invite).permit(:email_address, :role)
+        permitted = params.require(:invite).permit(:email_address)
+        permitted[:role] = params.dig(:invite, :role).presence_in(Invite.roles.keys) || "student"
+        permitted
       end
   end
 end
