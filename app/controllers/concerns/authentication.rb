@@ -39,7 +39,6 @@ module Authentication
 
       terminate_session
       redirect_to new_registration_path, alert: "Your account is not linked to an organization."
-      return
     end
 
     def resume_session
@@ -54,7 +53,7 @@ module Authentication
     end
 
     def request_authentication
-      session[:return_to_after_authenticating] = request.url
+      session[:return_to_after_authenticating] = request.fullpath
       redirect_to new_session_path
     end
 
